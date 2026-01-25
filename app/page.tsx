@@ -1,65 +1,73 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React from 'react';
+import { Home, User, Briefcase, FileText } from 'lucide-react';
+import { NavBar } from '@/components/ui/tubelight-navbar';
+import { MinimalistHero } from '@/components/ui/minimalist-hero'; // Using Hero for content, ignoring its internal navbar
+import SocialCardDemo from '@/components/demos/social-card-demo';
+import { ModeToggle } from '@/components/ui/mode-toggle';
+import dynamic from 'next/dynamic';
+
+const HorizonHeroSection = dynamic(
+  () => import('@/components/ui/horizon-hero-section').then((mod) => mod.HorizonHeroSection),
+  { ssr: false }
+);
+
+export default function MinimalistHeroDemo() {
+  const navItems = [
+    { name: 'Home', url: '/', icon: Home },
+    { name: 'Skills', url: '/skills', icon: Briefcase },
+    { name: 'Project', url: '#', icon: FileText },
+    { name: 'About ', url: '/about', icon: User }
+  ];
+
+  const heroNavLinks = [
+    { label: 'HOME', href: '/' },
+    { label: 'SKILLS', href: '/skills' },
+    { label: 'PROJECT', href: '#' },
+    { label: 'ABOUT ME', href: '#' },
+  ];
+
+  const socialLinks = [
+    // Social links remain as placeholders in MinimalistHero, or can be passed here if needed
+    { icon: User, href: '#' }, // Importing User just to have an icon, ideally replace with correct social icons if needed
+  ];
+
+  // We need to render the new NavBar and the Hero.
+  // Since MinimalistHero has its own header, we might see double headers.
+  // Ideally we should refactor MinimalistHero, but for now let's render NavBar *outside*.
+  // However, MinimalistHero takes full screen. The new NavBar is fixed.
+  // So it should overlay nicely.
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="relative">
+      <NavBar items={navItems} />
+      <div className="fixed top-6 left-6 z-50 font-bold text-xl tracking-widest text-foreground hidden md:block">
+        DHRUV BAJPAI
+      </div>
+      <div className="fixed top-6 right-6 z-50">
+        <ModeToggle />
+      </div>
+      <div className="fixed bottom-6 left-6 z-50">
+        <SocialCardDemo />
+      </div>
+      <MinimalistHero
+        logoText="Dhruv Bajpai"
+        navLinks={heroNavLinks} // Keeping these for the hero's internal structure if needed, or we can pass empty to hide them if we refactor Hero
+        mainText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices, justo vel tempus."
+        readMoreLink="#"
+        imageSrc="/hero-image.png"
+        imageAlt="A portrait of a person in a black turtleneck, in profile."
+        overlayText={{
+          part1: 'less is',
+          part2: 'more.',
+        }}
+        socialLinks={[]} // MinimalistHero expects social links, passing empty or mock
+        locationText="Arlington Heights, IL"
+      />
+      <div className="w-full h-screen bg-black z-20 relative">
+        <HorizonHeroSection />
+      </div>
     </div>
   );
-}
+};
