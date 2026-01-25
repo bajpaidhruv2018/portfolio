@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useLayoutEffect } from 'react';
+import { gsap } from 'gsap';
 import { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -52,74 +52,141 @@ export const MinimalistHero = ({
   locationText,
   className,
 }: MinimalistHeroProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLButtonElement>(null);
+  const leftTextRef = useRef<HTMLDivElement>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const rightTextRef = useRef<HTMLDivElement>(null);
+  const footerIconsRef = useRef<HTMLDivElement>(null);
+  const footerLocRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      // Initial Setup
+      gsap.set([
+        logoRef.current,
+        navRef.current,
+        mobileMenuRef.current,
+        leftTextRef.current,
+        circleRef.current,
+        imageRef.current,
+        rightTextRef.current,
+        footerIconsRef.current,
+        footerLocRef.current
+      ], { opacity: 0 });
+
+      gsap.set(logoRef.current, { x: -20 });
+      gsap.set(mobileMenuRef.current, { x: 20 });
+      gsap.set(leftTextRef.current, { y: 20 });
+      gsap.set(circleRef.current, { scale: 0.8 });
+      gsap.set(imageRef.current, { y: 100, scale: 1.1 }); // More dramatic image entry
+      gsap.set(rightTextRef.current, { y: 20 });
+      gsap.set(footerIconsRef.current, { y: 20 });
+      gsap.set(footerLocRef.current, { y: 20 });
+
+      // Animation Sequence
+      tl.to([logoRef.current, navRef.current, mobileMenuRef.current], {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        stagger: 0.1
+      })
+        .to(circleRef.current, {
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: "elastic.out(1, 0.75)"
+        }, "-=0.4")
+        .to(imageRef.current, {
+          opacity: 1,
+          y: 0,
+          scale: 1.5, // Match expectation of scale-150 class
+          duration: 1.5,
+          ease: "power4.out" // Very smooth deceleration
+        }, "-=1.0")
+        .to(leftTextRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8
+        }, "-=0.8")
+        .to(rightTextRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8
+        }, "-=0.6")
+        .to([footerIconsRef.current, footerLocRef.current], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1
+        }, "-=0.4");
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div
+      ref={containerRef}
       className={cn(
         'relative flex h-screen w-full flex-col items-center justify-between overflow-hidden bg-background p-8 font-sans md:p-12',
         className
       )}
     >
-      {/* Header - Hidden in favor of TubelightNavbar */}
-      {/* <header className="z-30 flex w-full max-w-7xl items-center justify-between"> ... </header> */}
-      <div className="hidden">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-xl font-bold tracking-wider"
-        >
+      {/* Header - Hidden in favor of TubelightNavbar but keeping structure for animation targeting if needed */}
+      <div className="hidden w-full max-w-7xl items-center justify-between">
+        <div ref={logoRef} className="text-xl font-bold tracking-wider">
           {logoText}
-        </motion.div>
-        <div className="hidden items-center space-x-8 md:flex">
+        </div>
+        <div ref={navRef} className="hidden items-center space-x-8 md:flex">
           {navLinks.map((link) => (
             <NavLink key={link.label} href={link.href}>
               {link.label}
             </NavLink>
           ))}
         </div>
-        <motion.button
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+        <button
+          ref={mobileMenuRef}
           className="flex flex-col space-y-1.5 md:hidden"
           aria-label="Open menu"
         >
           <span className="block h-0.5 w-6 bg-foreground"></span>
           <span className="block h-0.5 w-6 bg-foreground"></span>
           <span className="block h-0.5 w-5 bg-foreground"></span>
-        </motion.button>
+        </button>
       </div>
 
       {/* Main Content Area */}
       <div className="relative grid w-full max-w-7xl flex-grow grid-cols-1 items-center md:grid-cols-3">
         {/* Left Text Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
+        <div
+          ref={leftTextRef}
           className="z-20 order-2 md:order-1 text-center md:text-left"
         >
           <p className="mx-auto max-w-xs text-sm leading-relaxed text-foreground/80 md:mx-0">{mainText}</p>
           <a href={readMoreLink} className="mt-4 inline-block text-sm font-medium text-foreground underline decoration-from-font">
             Read More
           </a>
-        </motion.div>
+        </div>
 
         {/* Center Image with Circle */}
         <div className="relative order-1 md:order-2 flex justify-center items-center h-full">
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          <div
+            ref={circleRef}
             className="absolute z-0 h-[300px] w-[300px] rounded-full bg-yellow-400/90 md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px]"
-          ></motion.div>
-          <motion.img
+          ></div>
+          <img
+            ref={imageRef}
             src={imageSrc}
             alt={imageAlt}
-            className="relative z-10 h-auto w-56 object-cover md:w-64 scale-150 lg:w-72"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+            // scale-150 handled by GSAP now for smoother initial state, but base styles remain
+            className="relative z-10 h-auto w-56 object-cover md:w-64 lg:w-72"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.onerror = null;
@@ -129,10 +196,8 @@ export const MinimalistHero = ({
         </div>
 
         {/* Right Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
+        <div
+          ref={rightTextRef}
           className="z-20 order-3 flex items-center justify-center text-center md:justify-start"
         >
           <h1 className="text-7xl font-extrabold text-foreground md:text-8xl lg:text-9xl">
@@ -140,29 +205,25 @@ export const MinimalistHero = ({
             <br />
             {overlayText.part2}
           </h1>
-        </motion.div>
+        </div>
       </div>
 
       {/* Footer Elements */}
       <footer className="z-30 flex w-full max-w-7xl items-center justify-between">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
+        <div
+          ref={footerIconsRef}
           className="flex items-center space-x-4"
         >
           {socialLinks.map((link, index) => (
             <SocialIcon key={index} href={link.href} icon={link.icon} />
           ))}
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.3 }}
+        </div>
+        <div
+          ref={footerLocRef}
           className="text-sm font-medium text-foreground/80"
         >
           {locationText}
-        </motion.div>
+        </div>
       </footer>
     </div>
   );
