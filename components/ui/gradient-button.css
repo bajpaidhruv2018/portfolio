@@ -1,0 +1,163 @@
+@property --pos-x {
+    syntax: '<percentage>';
+    initial-value: 11.14%;
+    inherits: false;
+}
+
+@property --pos-y {
+    syntax: '<percentage>';
+    initial-value: 140%;
+    inherits: false;
+}
+
+@property --spread-x {
+    syntax: '<percentage>';
+    initial-value: 150%;
+    inherits: false;
+}
+
+@property --spread-y {
+    syntax: '<percentage>';
+    initial-value: 180.06%;
+    inherits: false;
+}
+
+@property --color-1 {
+    syntax: '<color>';
+    initial-value: #000;
+    inherits: false;
+}
+
+@property --color-2 {
+    syntax: '<color>';
+    initial-value: #08012c;
+    inherits: false;
+}
+
+@property --color-3 {
+    syntax: '<color>';
+    initial-value: #4e1e40;
+    inherits: false;
+}
+
+@property --color-4 {
+    syntax: '<color>';
+    initial-value: #70464e;
+    inherits: false;
+}
+
+@property --color-5 {
+    syntax: '<color>';
+    initial-value: #88394c;
+    inherits: false;
+}
+
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 20deg;
+    inherits: true;
+}
+
+@property --border-color-1 {
+    syntax: '<color>';
+    initial-value: hsla(340, 75%, 60%, 0.2);
+    inherits: true;
+}
+
+@property --border-color-2 {
+    syntax: '<color>';
+    initial-value: hsla(340, 75%, 40%, 0.75);
+    inherits: true;
+}
+
+@property --stop-1 {
+    syntax: '<percentage>';
+    initial-value: 37.35%;
+    inherits: false;
+}
+
+@property --stop-2 {
+    syntax: '<percentage>';
+    initial-value: 61.36%;
+    inherits: false;
+}
+
+@property --stop-3 {
+    syntax: '<percentage>';
+    initial-value: 78.42%;
+    inherits: false;
+}
+
+@property --stop-4 {
+    syntax: '<percentage>';
+    initial-value: 89.52%;
+    inherits: false;
+}
+
+@property --stop-5 {
+    syntax: '<percentage>';
+    initial-value: 100%;
+    inherits: false;
+}
+
+.gradient-button {
+    position: relative;
+    appearance: none;
+    cursor: pointer;
+    background: radial-gradient(var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+            var(--color-1) var(--stop-1),
+            var(--color-2) var(--stop-2),
+            var(--color-3) var(--stop-3),
+            var(--color-4) var(--stop-4),
+            var(--color-5) var(--stop-5));
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+/* Pseudo-element for the hover state gradient */
+.gradient-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120.24% 103.18% at 0% 91.51%,
+            #c96287 0%,
+            #c66c64 8.8%,
+            #cc7d23 21.44%,
+            #37140a 71.34%,
+            #000 85.76%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    border-radius: inherit;
+}
+
+.gradient-button:hover::after {
+    opacity: 1;
+}
+
+/* Ensure text stays on top */
+.gradient-button>* {
+    position: relative;
+    z-index: 2;
+}
+
+
+.gradient-button-variant {
+    --color-1: #000022;
+    --color-2: #1f3f6d;
+    --color-3: #469396;
+    --color-4: #f1ffa5;
+    --border-angle: 200deg;
+    --border-color-1: hsla(320, 75%, 90%, 0.6);
+    --border-color-2: hsla(320, 50%, 90%, 0.15);
+}
+
+/* Variant pseudo-element override */
+.gradient-button.gradient-button-variant::after {
+    background: radial-gradient(110.24% 110.2% at 0% 95.51%,
+            #000020 0%,
+            #f1ffa5 10%,
+            #469396 35.44%,
+            #1f3f6d 71.34%,
+            #000 90.76%);
+}

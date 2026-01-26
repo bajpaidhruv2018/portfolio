@@ -13,7 +13,7 @@ export default function SkillsPage() {
     const navItems = [
         { name: 'Home', url: '/', icon: Home },
         { name: 'Skills', url: '/skills', icon: Briefcase },
-        { name: 'Project', url: '#', icon: FileText },
+        { name: 'Project', url: '/projects', icon: FileText },
         { name: 'About ', url: '/about', icon: User }
     ];
 

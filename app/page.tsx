@@ -17,14 +17,14 @@ export default function MinimalistHeroDemo() {
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
     { name: 'Skills', url: '/skills', icon: Briefcase },
-    { name: 'Project', url: '#', icon: FileText },
+    { name: 'Project', url: '/projects', icon: FileText },
     { name: 'About ', url: '/about', icon: User }
   ];
 
   const heroNavLinks = [
     { label: 'HOME', href: '/' },
     { label: 'SKILLS', href: '/skills' },
-    { label: 'PROJECT', href: '#' },
+    { label: 'PROJECT', href: '/projects' },
     { label: 'ABOUT ME', href: '#' },
   ];
 
