@@ -62,7 +62,7 @@ export default function SkillsPage() {
                         <TextParticle
                             text="NEXT"
                             fontSize={100}
-                            particleColor={isDark ? "#ffffff" : "#000000"} // White/Black for Next.js
+                            particleColor="#ffffff" // White for Next.js
                             particleSize={1.5}
                             particleDensity={6}
                         />

@@ -38,12 +38,17 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             ref={containerRef}
         >
             <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-                <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
-                    Changelog from my journey
+                <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl font-bold">
+                    Changelog
                 </h2>
-                <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
-                    I&apos;ve been working on Aceternity for the past 2 years. Here&apos;s
-                    a timeline of my journey.
+                <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-2xl mb-4">
+                    I&apos;m Dhruv Bajpai, a first-year B.Tech student in CSE (AI &amp; ML) who learns by building.
+                </p>
+                <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-2xl mb-4">
+                    I focus on creating clean, usable interfaces and thinking in systems — how components fit together, how products scale, and how design and logic should support each other.
+                </p>
+                <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-2xl">
+                    I started building seriously in 2024. Since then, my approach has been simple: build real things, ship them, break them, and improve.
                 </p>
             </div>
 
