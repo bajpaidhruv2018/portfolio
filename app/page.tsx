@@ -54,7 +54,7 @@ export default function MinimalistHeroDemo() {
       <MinimalistHero
         logoText="Dhruv Bajpai"
         navLinks={heroNavLinks} // Keeping these for the hero's internal structure if needed, or we can pass empty to hide them if we refactor Hero
-        mainText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices, justo vel tempus."
+        mainText="A person who never made a mistake never tried anything new. Life is about learning from the things we do wrong"
         readMoreLink="#"
         imageSrc="/hero-image.png"
         imageAlt="A portrait of a person in a black turtleneck, in profile."
