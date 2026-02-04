@@ -374,9 +374,9 @@ export function CardStack<T extends CardStackItem>({
     );
 }
 
-function DefaultFanCard({ item }: { item: CardStackItem; active: boolean }) {
-    return (
-        <div className="relative h-full w-full">
+function DefaultFanCard({ item, active }: { item: CardStackItem; active: boolean }) {
+    const content = (
+        <>
             {/* image */}
             <div className="absolute inset-0">
                 {item.imageSrc ? (
@@ -408,6 +408,24 @@ function DefaultFanCard({ item }: { item: CardStackItem; active: boolean }) {
                     </div>
                 ) : null}
             </div>
-        </div>
+        </>
     );
+
+    if (item.href) {
+        return (
+            <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative h-full w-full block"
+                onClick={(e) => {
+                    e.stopPropagation();
+                }}
+            >
+                {content}
+            </a>
+        );
+    }
+
+    return <div className="relative h-full w-full">{content}</div>;
 }

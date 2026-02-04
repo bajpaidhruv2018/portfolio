@@ -4,6 +4,7 @@ import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 // Define the props interface for type safety and reusability
 interface MinimalistHeroProps {
@@ -170,9 +171,9 @@ export const MinimalistHero = ({
           className="z-20 order-2 md:order-1 text-center md:text-left"
         >
           <p className="mx-auto max-w-xs text-sm leading-relaxed text-foreground/80 md:mx-0">{mainText}</p>
-          <a href={readMoreLink} className="mt-4 inline-block text-sm font-medium text-foreground underline decoration-from-font">
+          <Link href={readMoreLink} className="mt-4 inline-block text-sm font-medium text-foreground underline decoration-from-font">
             Read More
-          </a>
+          </Link>
         </div>
 
         {/* Center Image with Circle */}

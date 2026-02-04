@@ -4,7 +4,7 @@ import React from 'react';
 import { Home, User, Briefcase, FileText } from 'lucide-react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { MinimalistHero } from '@/components/ui/minimalist-hero'; // Using Hero for content, ignoring its internal navbar
-import SocialCardDemo from '@/components/demos/social-card-demo';
+import { SocialLinks } from '@/components/ui/social-links';
 import { ModeToggle } from '@/components/ui/mode-toggle';
 import dynamic from 'next/dynamic';
 
@@ -33,6 +33,24 @@ export default function MinimalistHeroDemo() {
     { icon: User, href: '#' }, // Importing User just to have an icon, ideally replace with correct social icons if needed
   ];
 
+  const socials = [
+    {
+      name: "GitHub",
+      image: "https://cdn.simpleicons.org/github/white",
+      url: "https://github.com/bajpaidhruv2018"
+    },
+    {
+      name: "LinkedIn",
+      image: "https://img.icons8.com/fluency/96/linkedin.png",
+      url: "https://www.linkedin.com/in/dhruv-bajpai-051aa2380/"
+    },
+    {
+      name: "Instagram",
+      image: "https://cdn.simpleicons.org/instagram/E4405F",
+      url: "https://www.instagram.com/dhruv_bajpai30/"
+    }
+  ];
+
   // We need to render the new NavBar and the Hero.
   // Since MinimalistHero has its own header, we might see double headers.
   // Ideally we should refactor MinimalistHero, but for now let's render NavBar *outside*.
@@ -49,7 +67,7 @@ export default function MinimalistHeroDemo() {
         <ModeToggle />
       </div>
       <div className="fixed bottom-6 left-6 z-50">
-        <SocialCardDemo />
+        <SocialLinks socials={socials} />
       </div>
       <MinimalistHero
         logoText="Dhruv Bajpai"

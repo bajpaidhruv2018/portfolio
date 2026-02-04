@@ -4,6 +4,7 @@ import React from "react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { Home, User, Briefcase, FileText } from 'lucide-react';
 import { CardStack, CardStackItem } from "@/components/ui/card-stack";
+import AnoAI from "@/components/ui/animated-shader-background";
 
 // Project items using images from public folder
 const items: CardStackItem[] = [
@@ -47,6 +48,7 @@ export default function ProjectsPage() {
 
     return (
         <div className="min-h-screen bg-background font-sans flex flex-col items-center">
+            <AnoAI />
             <NavBar items={navItems} />
             <div className="w-full flex-1 flex flex-col items-center justify-center py-20">
                 <h1 className="text-4xl font-bold mb-10 text-foreground font-orbitron">My Projects</h1>
