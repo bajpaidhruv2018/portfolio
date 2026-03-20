@@ -186,13 +186,31 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Mobile optimizations for social cards */
+@media (max-width: 768px) {
+  .card {
+    width: 180px;
+    height: 75px;
+  }
+}
+
 .dark .card {
   background: #1e293b;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
-.card:hover {
+.card:hover,
+.card:active {
   height: 200px;
+}
+
+/* On mobile, also expand on focus for better accessibility */
+@media (max-width: 768px) {
+
+  .card:hover,
+  .card:active {
+    height: 180px;
+  }
 }
 
 .card .logo {
@@ -305,9 +323,12 @@
 
 /* Float animation keyframes */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }

@@ -63,10 +63,10 @@ export default function MinimalistHeroDemo() {
       <div className="fixed top-6 left-6 z-50 font-bold text-xl tracking-widest text-foreground hidden md:block">
         DHRUV BAJPAI
       </div>
-      <div className="fixed top-6 right-6 z-50">
+      <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50">
         <ModeToggle />
       </div>
-      <div className="fixed bottom-6 left-6 z-50">
+      <div className="fixed bottom-28 left-1/2 -translate-x-1/2 md:translate-x-0 md:bottom-6 md:left-6 z-50">
         <SocialLinks socials={socials} />
       </div>
       <MinimalistHero

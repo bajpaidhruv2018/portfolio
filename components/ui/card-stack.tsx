@@ -125,6 +125,33 @@ export function CardStack<T extends CardStackItem>({
     );
     const [hovering, setHovering] = React.useState(false);
 
+    // Responsive card sizing
+    const [responsiveCardWidth, setResponsiveCardWidth] = React.useState(cardWidth);
+    const [responsiveCardHeight, setResponsiveCardHeight] = React.useState(cardHeight);
+
+    React.useEffect(() => {
+        const updateCardSize = () => {
+            const width = window.innerWidth;
+            if (width < 640) {
+                // Mobile
+                setResponsiveCardWidth(Math.min(cardWidth, width - 40));
+                setResponsiveCardHeight(Math.min(cardHeight, 240));
+            } else if (width < 768) {
+                // Tablet
+                setResponsiveCardWidth(Math.min(cardWidth, width - 60));
+                setResponsiveCardHeight(Math.min(cardHeight, 280));
+            } else {
+                // Desktop
+                setResponsiveCardWidth(cardWidth);
+                setResponsiveCardHeight(cardHeight);
+            }
+        };
+
+        updateCardSize();
+        window.addEventListener('resize', updateCardSize);
+        return () => window.removeEventListener('resize', updateCardSize);
+    }, [cardWidth, cardHeight]);
+
     // keep active in bounds if items change
     React.useEffect(() => {
         setActive((a) => wrapIndex(a, len));
@@ -138,7 +165,7 @@ export function CardStack<T extends CardStackItem>({
 
     const maxOffset = Math.max(0, Math.floor(maxVisible / 2));
 
-    const cardSpacing = Math.max(10, Math.round(cardWidth * (1 - overlap)));
+    const cardSpacing = Math.max(10, Math.round(responsiveCardWidth * (1 - overlap)));
     const stepDeg = maxOffset > 0 ? spreadDeg / maxOffset : 0;
 
     const canGoPrev = loop || active > 0;
@@ -165,7 +192,7 @@ export function CardStack<T extends CardStackItem>({
     // autoplay
     React.useEffect(() => {
         if (!autoAdvance) return;
-        if (reduceMotion) return;
+        // if (reduceMotion) return;
         if (!len) return;
         if (pauseOnHover && hovering) return;
 
@@ -202,7 +229,7 @@ export function CardStack<T extends CardStackItem>({
             {/* Stage */}
             <div
                 className="relative w-full"
-                style={{ height: Math.max(380, cardHeight + 80) }}
+                style={{ height: Math.max(320, responsiveCardHeight + 80) }}
                 tabIndex={0}
                 onKeyDown={onKeyDown}
             >
@@ -259,7 +286,7 @@ export function CardStack<T extends CardStackItem>({
                                         if (reduceMotion) return;
                                         const travel = info.offset.x;
                                         const v = info.velocity.x;
-                                        const threshold = Math.min(160, cardWidth * 0.22);
+                                        const threshold = Math.min(160, responsiveCardWidth * 0.22);
 
                                         // swipe logic
                                         if (travel > threshold || v > 650) prev();
@@ -279,8 +306,8 @@ export function CardStack<T extends CardStackItem>({
                                             : "cursor-pointer",
                                     )}
                                     style={{
-                                        width: cardWidth,
-                                        height: cardHeight,
+                                        width: responsiveCardWidth,
+                                        height: responsiveCardHeight,
                                         zIndex,
                                         transformStyle: "preserve-3d",
                                     }}

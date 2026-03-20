@@ -136,7 +136,7 @@ export const MinimalistHero = ({
     <div
       ref={containerRef}
       className={cn(
-        'relative flex h-screen w-full flex-col items-center justify-between overflow-hidden bg-background p-8 font-sans md:p-12',
+        'relative flex h-screen w-full flex-col items-center justify-between overflow-hidden bg-background p-4 sm:p-6 md:p-12 font-sans',
         className
       )}
     >
@@ -180,14 +180,14 @@ export const MinimalistHero = ({
         <div className="relative order-1 md:order-2 flex justify-center items-center h-full">
           <div
             ref={circleRef}
-            className="absolute z-0 h-[300px] w-[300px] rounded-full bg-yellow-400/90 md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px]"
+            className="absolute z-0 h-[250px] w-[250px] rounded-full bg-yellow-400/90 sm:h-[300px] sm:w-[300px] md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px]"
           ></div>
           <img
             ref={imageRef}
             src={imageSrc}
             alt={imageAlt}
             // scale-150 handled by GSAP now for smoother initial state, but base styles remain
-            className="relative z-10 h-auto w-56 object-cover md:w-64 lg:w-72"
+            className="relative z-10 h-auto w-44 object-cover sm:w-56 md:w-64 lg:w-72"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.onerror = null;
@@ -201,7 +201,7 @@ export const MinimalistHero = ({
           ref={rightTextRef}
           className="z-20 order-3 flex items-center justify-center text-center md:justify-start"
         >
-          <h1 className="text-7xl font-extrabold text-foreground md:text-8xl lg:text-9xl">
+          <h1 className="text-5xl font-extrabold text-foreground sm:text-6xl md:text-8xl lg:text-9xl">
             {overlayText.part1}
             <br />
             {overlayText.part2}

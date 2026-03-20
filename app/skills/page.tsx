@@ -18,22 +18,22 @@ export default function SkillsPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-background p-8 md:p-12 font-sans flex flex-col items-center">
+        <div className="min-h-screen bg-background p-4 sm:p-6 md:p-12 font-sans flex flex-col items-center">
             <NavBar items={navItems} />
 
-            <div className="w-full max-w-7xl flex-grow flex flex-col items-center justify-center pt-20 space-y-12">
-                <div className="text-center space-y-4">
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">
+            <div className="w-full max-w-7xl flex-grow flex flex-col items-center justify-center pt-16 sm:pt-20 space-y-8 sm:space-y-12">
+                <div className="text-center space-y-3 sm:space-y-4 px-4">
+                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter">
                         Technical Arsenal
                     </h1>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
                         Interactive exploration of my core competencies. Hover over the skills to disrupt the particles.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full">
                     {/* Skill 1: TypeScript */}
-                    <div className="h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
+                    <div className="h-56 sm:h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
                         <div className="absolute top-4 left-4 text-sm font-bold text-muted-foreground">LANGUAGE</div>
                         <TextParticle
                             text="TS"
@@ -45,7 +45,7 @@ export default function SkillsPage() {
                     </div>
 
                     {/* Skill 2: React */}
-                    <div className="h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
+                    <div className="h-56 sm:h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
                         <div className="absolute top-4 left-4 text-sm font-bold text-muted-foreground">FRAMEWORK</div>
                         <TextParticle
                             text="REACT"
@@ -57,7 +57,7 @@ export default function SkillsPage() {
                     </div>
 
                     {/* Skill 3: Next.js */}
-                    <div className="h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
+                    <div className="h-56 sm:h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
                         <div className="absolute top-4 left-4 text-sm font-bold text-muted-foreground">META-FRAMEWORK</div>
                         <TextParticle
                             text="NEXT"
@@ -68,7 +68,7 @@ export default function SkillsPage() {
                         />
                     </div>
                     {/* Skill 4: Python */}
-                    <div className="h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
+                    <div className="h-56 sm:h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
                         <div className="absolute top-4 left-4 text-sm font-bold text-muted-foreground">BACKEND</div>
                         <TextParticle
                             text="PY"
@@ -79,7 +79,7 @@ export default function SkillsPage() {
                         />
                     </div>
                     {/* Skill 5: Node */}
-                    <div className="h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
+                    <div className="h-56 sm:h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
                         <div className="absolute top-4 left-4 text-sm font-bold text-muted-foreground">RUNTIME</div>
                         <TextParticle
                             text="NODE"
@@ -90,7 +90,7 @@ export default function SkillsPage() {
                         />
                     </div>
                     {/* Skill 6: Tailwind */}
-                    <div className="h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
+                    <div className="h-56 sm:h-64 border rounded-xl overflow-hidden bg-card/50 backdrop-blur-sm relative group">
                         <div className="absolute top-4 left-4 text-sm font-bold text-muted-foreground">STYLING</div>
                         <TextParticle
                             text="CSS"

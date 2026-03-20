@@ -36,6 +36,13 @@ const items: CardStackItem[] = [
         imageSrc: "/httpsspeedtestpro-five.vercel.app.png",
         href: "https://speedtestpro-five.vercel.app",
     },
+    {
+        id: 5,
+        title: "Sentience",
+        description: "Emotional Intelligence Platform",
+        imageSrc: "/sentience.png",
+        href: "https://sentience-v2.vercel.app/sentience",
+    },
 ];
 
 export default function ProjectsPage() {
@@ -50,15 +57,15 @@ export default function ProjectsPage() {
         <div className="min-h-screen bg-background font-sans flex flex-col items-center">
             <AnoAI />
             <NavBar items={navItems} />
-            <div className="w-full flex-1 flex flex-col items-center justify-center py-20">
-                <h1 className="text-4xl font-bold mb-10 text-foreground font-orbitron">My Projects</h1>
-                <div className="w-full max-w-5xl p-8">
+            <div className="w-full flex-1 flex flex-col items-center justify-center py-12 pb-28 sm:py-16 md:py-20 md:pb-20">
+                <h1 className="text-3xl sm:text-4xl font-bold mb-8 md:mb-10 text-foreground font-orbitron px-4">My Projects</h1>
+                <div className="w-full max-w-5xl px-4 sm:px-6 md:p-8">
                     <CardStack
                         items={items}
                         initialIndex={0}
                         autoAdvance
                         intervalMs={3000}
-                        pauseOnHover
+                        pauseOnHover={false}
                         showDots
                     />
                 </div>

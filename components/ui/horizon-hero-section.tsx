@@ -561,40 +561,40 @@ export const HorizonHeroSection = () => {
     }, [totalSections]);
 
     return (
-        <div ref={containerRef} className="hero-container cosmos-style relative w-full h-[50vh] overflow-hidden rounded-lg mt-10">
+        <div ref={containerRef} className="hero-container cosmos-style relative w-full h-[40vh] sm:h-[50vh] overflow-hidden rounded-lg mt-6 sm:mt-10">
             <canvas ref={canvasRef} className="hero-canvas absolute inset-0 w-full h-full" />
 
             {/* Scroll sections */}
             <div className="scroll-sections absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
 
                 {/* Dynamic Text Section */}
-                <div className="content-section text-center z-10 p-8">
+                <div className="content-section text-center z-10 p-4 sm:p-8">
                     {currentSection === 0 && (
                         <>
-                            <h1 className="hero-title text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                            <h1 className="hero-title text-2xl sm:text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
                                 DHRUV BAJPAI
                             </h1>
-                            <div className="hero-subtitle cosmos-subtitle mt-4 text-white/80">
+                            <div className="hero-subtitle cosmos-subtitle mt-2 sm:mt-4 text-white/80 text-sm sm:text-base">
                                 <p className="subtitle-line">Where vision meets reality</p>
                             </div>
                         </>
                     )}
                     {currentSection === 1 && (
                         <>
-                            <h1 className="hero-title text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
+                            <h1 className="hero-title text-2xl sm:text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
                                 VIT BHOPAL
                             </h1>
-                            <div className="hero-subtitle cosmos-subtitle mt-4 text-white/80">
+                            <div className="hero-subtitle cosmos-subtitle mt-2 sm:mt-4 text-white/80 text-sm sm:text-base">
                                 <p className="subtitle-line">Engineering the Future</p>
                             </div>
                         </>
                     )}
                     {currentSection >= 2 && (
                         <>
-                            <h1 className="hero-title text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500">
+                            <h1 className="hero-title text-xl sm:text-3xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500">
                                 CITY MONTESSORI SCHOOL
                             </h1>
-                            <div className="hero-subtitle cosmos-subtitle mt-4 text-white/80">
+                            <div className="hero-subtitle cosmos-subtitle mt-2 sm:mt-4 text-white/80 text-sm sm:text-base">
                                 <p className="subtitle-line">Excellence in Education</p>
                             </div>
                         </>
