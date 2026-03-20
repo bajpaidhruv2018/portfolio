@@ -4,7 +4,6 @@ import React from "react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { Home, User, Briefcase, FileText } from 'lucide-react';
 import { CardStack, CardStackItem } from "@/components/ui/card-stack";
-import AnoAI from "@/components/ui/animated-shader-background";
 
 // Project items using images from public folder
 const items: CardStackItem[] = [
@@ -54,11 +53,24 @@ export default function ProjectsPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-background font-sans flex flex-col items-center">
-            <AnoAI />
-            <NavBar items={navItems} />
-            <div className="w-full flex-1 flex flex-col items-center justify-center py-12 pb-28 sm:py-16 md:py-20 md:pb-20">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-8 md:mb-10 text-foreground font-orbitron px-4">My Projects</h1>
+        <div 
+            className="min-h-screen font-sans flex flex-col items-center relative"
+            style={{
+                backgroundImage: "url('/projects-bg.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundAttachment: "fixed"
+            }}
+        >
+            {/* Dark overlay for readability */}
+            <div className="absolute inset-0 bg-black/60 z-0 pointer-events-none" />
+            
+            <div className="relative z-50 w-full">
+                <NavBar items={navItems} />
+            </div>
+            
+            <div className="w-full flex-1 flex flex-col items-center justify-center py-12 pb-28 sm:py-16 md:py-20 md:pb-20 relative z-10">
+                <h1 className="text-3xl sm:text-4xl font-bold mb-8 md:mb-10 text-white font-orbitron px-4 drop-shadow-md">My Projects</h1>
                 <div className="w-full max-w-5xl px-4 sm:px-6 md:p-8">
                     <CardStack
                         items={items}
