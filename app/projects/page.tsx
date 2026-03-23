@@ -42,6 +42,13 @@ const items: CardStackItem[] = [
         imageSrc: "/sentience.png",
         href: "https://sentience-v2.vercel.app/sentience",
     },
+    {
+        id: 6,
+        title: "DesertNav",
+        description: "Mapping desert terrain for autonomous nav",
+        imageSrc: "/desertnav.png",
+        href: "https://semantic-segmentation-ai-model.vercel.app/",
+    },
 ];
 
 export default function ProjectsPage() {
