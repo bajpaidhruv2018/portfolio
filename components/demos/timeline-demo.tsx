@@ -46,7 +46,7 @@ export function TimelineDemo() {
             content: (
                 <div>
                     <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
-                        I participated in multiple hackathons, including events at VIT, where I won one.
+                        I participated in multiple hackathons, including events at VIT.
                     </p>
                     <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
                         These experiences pushed me to build fast, think clearly under pressure, and collaborate effectively. Hackathons helped me understand how ideas turn into working products — not perfect, but functional and focused.
