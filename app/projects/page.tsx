@@ -8,6 +8,13 @@ import { CardStack, CardStackItem } from "@/components/ui/card-stack";
 // Project items using images from public folder
 const items: CardStackItem[] = [
     {
+        id: 8,
+        title: "TeachDeck",
+        description: "AI-Powered Grading Studio",
+        imageSrc: "/teachdeck.png",
+        href: "https://teachdeck.vercel.app/",
+    },
+    {
         id: 7,
         title: "ToxPredict",
         description: "AI-Powered Drug Toxicity Prediction",
